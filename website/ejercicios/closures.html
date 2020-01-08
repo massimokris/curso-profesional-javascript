@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+        <a href="/ejercicios/">Go back</a>
+        <p><em>Abre la consola</em></p>
+
+        <script>
+            //Closurer
+            
+            //IIFE invocacion inmediata de funcion expresada
+            (function () {
+                let color = 'green';
+
+                function printColor() {
+                    console.log(color);
+                }
+
+                printColor();
+            })();
+
+            //funciones que regresan funciones
+            function makeColorPrinter(color) {
+                let colorMessage = `The color is ${color}`;
+
+                return function() {
+                    console.log(colorMessage);
+                };
+            }
+
+            debugger
+            let greenColorPrinter = makeColorPrinter('green');
+            console.log(greenColorPrinter());
+
+            //variables "privadas"
+            const counter = {
+                count: 3
+            }
+            console.log(counter.count);
+
+            function makeCounter(n) {
+                let count = n;
+
+                return {
+                    increase: function () {
+                        count++
+                    },
+                    decrease: function () {
+                        count--;
+                    },
+                    getCount: function () {
+                        return count;
+                    }
+                }
+            }
+
+            let counter2 = makeCounter(7);
+
+            console.log(`The count is: ${counter2.getCount()}`);
+            counter2.increase();
+            console.log(`The count is: ${counter2.getCount()}`);
+            counter2.decrease();
+            counter2.decrease();
+            counter2.decrease();
+            console.log(`The count is: ${counter2.getCount()}`);
+        </script>
+    </body>
+</html>

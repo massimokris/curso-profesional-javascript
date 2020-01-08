@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+        <a href="/ejercicios/">Go back</a>
+        <p><em>Abre la consola</em></p>
+
+        <script>// un obejto comun y corriente
+const zelda = {
+  name: 'Zelda'
+};
+
+zelda.saludar = function () {
+  console.log(`Hola soy : ${this.name}`);
+};
+
+zelda.saludar();
+const link = {
+  name: 'link'
+};
+
+link.saludar = function () {
+  console.log(`Hola soy : ${this.name}`);
+};
+
+link.saludar(); //seamos un poco mas eficientes
+
+function Hero(name) {
+  const hero = {
+    name: name
+  };
+
+  hero.saludar = function () {
+    console.log(`Mi nombre es : ${this.name}`);
+  };
+
+  return hero;
+}
+
+const zelda2 = Hero('zelda');
+zelda2.saludar();
+const link2 = Hero('link');
+link2.saludar(); //Aun podemos mejorar mas y evitar tener que crear la misma funcion cada vez que instanciamos un objeto
+
+const heroMethods = {
+  Saludar: function () {
+    console.log(`Me llamo : ${this.name}`);
+  }
+};
+
+function Hero2(name) {
+  const hero = {
+    name: name
+  };
+  hero.saludar = heroMethods.Saludar;
+  return hero;
+}
+
+const zelda3 = Hero2('zelda');
+zelda3.saludar();
+const link3 = Hero2('link');
+link3.saludar(); //Object.create
+//const nuevoObjeto = Object.create(objeto);
+
+const heroMethods2 = {
+  Saludar: function () {
+    console.log(`Soy Heroe! ${this.name}`);
+  }
+};
+
+function Hero3(name) {
+  const hero = Object.create(heroMethods2);
+  hero.name = name;
+  return hero;
+}
+
+const zelda4 = Hero3('zelda');
+zelda4.Saludar();
+const link4 = Hero3('link');
+link4.Saludar(); //Object.create con metodos dentro del prototipo
+
+function Hero4(name) {
+  const hero = Object.create(Hero4.prototype);
+  hero.name = name;
+  return hero;
+}
+
+Hero4.prototype.saludar = function () {
+  console.log(`Soy Heroina: ${this.name}`);
+};
+
+const zelda5 = Hero4('zelda');
+zelda5.saludar();
+const link5 = Hero4('link');
+link5.saludar(); //new es un atajo (azucar sintactica) para llevar Hero.prototype al objeto que se instancia
+
+function Hero5(name) {
+  //const hero = Object.create(Hero5.prototype);
+  this.name = name; //return this;
+}
+
+Hero5.prototype.saludar = function () {
+  console.log(`New: ${this.name}`);
+};
+
+const zelda6 = new Hero5('zelda');
+zelda6.saludar();
+const link6 = new Hero5('link');
+link6.saludar();</script>
+    </body>
+</html>

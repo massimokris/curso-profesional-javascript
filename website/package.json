@@ -1,0 +1,20 @@
+{
+  "name": "profesionaljs-02",
+  "version": "1.0.0",
+  "description": "Proyecto del curso profesional de js con platzi",
+  "scripts": {
+    "start": "parcel index.html ejercicios/index.html ejercicios/**/*.html"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4",
+    "typescript": "^3.7.2"
+  },
+  "browserslist": [
+    "last 1 Chrome version"
+  ],
+  "dependencies": {
+    "@massimokris/mediaplayer": "^1.0.0"
+  }
+}
